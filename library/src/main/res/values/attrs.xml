@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Themes">
+        <attr name="circleProgressStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleWaveProgress">
+        <attr name="circle_progress" format="integer" />
+        <attr name="circle_max" format="integer" />
+
+        <attr name="circle_background_color" format="color" />
+        <attr name="circle_border_color" format="color" />
+        <attr name="circle_border_with" format="dimension" />
+
+        <attr name="wave_font_color" format="color" />
+        <attr name="wave_behind_color" format="color" />
+        <attr name="wave_length" format="enum">
+            <enum name="large" value="1" />
+            <enum name="middle" value="2" />
+            <enum name="little" value="3" />
+        </attr>
+        <attr name="wave_height" format="enum">
+            <enum name="large" value="1" />
+            <enum name="middle" value="2" />
+            <enum name="little" value="3" />
+        </attr>
+        <attr name="wave_hz" format="enum">
+            <enum name="fast" value="1" />
+            <enum name="normal" value="2" />
+            <enum name="slow" value="3" />
+        </attr>
+
+        <attr name="circle_text_size" format="dimension" />
+        <attr name="circle_text_color" format="color" />
+        <attr name="circle_text" format="string" />
+
+    </declare-styleable>
+
+
+</resources>
