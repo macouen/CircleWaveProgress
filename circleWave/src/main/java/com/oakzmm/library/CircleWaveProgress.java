@@ -16,8 +16,8 @@ import android.view.View;
 import java.lang.ref.WeakReference;
 
 /**
- * PatrolDev
- * Created by acer_april
+ *
+ * Created by oak_zmm
  * on 2016/3/14
  * Description: circle progress with wave
  */
@@ -296,11 +296,11 @@ public class CircleWaveProgress extends View {
 
     private float getWaveMultiple(int size) {
         switch (size) {
-            case CircleWaveProgress.LARGE:
+            case LARGE:
                 return WAVE_LENGTH_MULTIPLE_LARGE;
-            case CircleWaveProgress.MIDDLE:
+            case MIDDLE:
                 return WAVE_LENGTH_MULTIPLE_MIDDLE;
-            case CircleWaveProgress.LITTLE:
+            case LITTLE:
                 return WAVE_LENGTH_MULTIPLE_LITTLE;
         }
         return 0;
@@ -308,11 +308,11 @@ public class CircleWaveProgress extends View {
 
     private int getWaveHeight(int size) {
         switch (size) {
-            case CircleWaveProgress.LARGE:
+            case LARGE:
                 return WAVE_HEIGHT_LARGE;
-            case CircleWaveProgress.MIDDLE:
+            case MIDDLE:
                 return WAVE_HEIGHT_MIDDLE;
-            case CircleWaveProgress.LITTLE:
+            case LITTLE:
                 return WAVE_HEIGHT_LITTLE;
         }
         return 0;
@@ -320,11 +320,11 @@ public class CircleWaveProgress extends View {
 
     private float getWaveHz(int size) {
         switch (size) {
-            case CircleWaveProgress.LARGE:
+            case LARGE:
                 return WAVE_HZ_FAST;
-            case CircleWaveProgress.MIDDLE:
+            case MIDDLE:
                 return WAVE_HZ_NORMAL;
-            case CircleWaveProgress.LITTLE:
+            case LITTLE:
                 return WAVE_HZ_SLOW;
         }
         return 0;

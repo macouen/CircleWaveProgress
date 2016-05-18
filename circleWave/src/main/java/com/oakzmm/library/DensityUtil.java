@@ -21,7 +21,7 @@ public class DensityUtil {
 	}
 
 	/**
-	 * 测量控件的尺寸
+	 * measure view
 	 * 
 	 * @param view
 	 */
