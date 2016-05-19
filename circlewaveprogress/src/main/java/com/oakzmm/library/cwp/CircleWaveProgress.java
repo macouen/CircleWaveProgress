@@ -122,7 +122,6 @@ public class CircleWaveProgress extends View {
         mBorderWith = attributes.getDimension(R.styleable.CircleWaveProgress_circle_border_with, DEFAULT_BORDER_WITH);
         setMax(attributes.getInt(R.styleable.CircleWaveProgress_circle_max, 100));
         setProgress(attributes.getInt(R.styleable.CircleWaveProgress_circle_progress, 0));
-        setCircleText(getProgress() + "%");
 
         if (attributes.getString(R.styleable.CircleWaveProgress_circle_text) != null) {
             setCircleText(attributes.getString(R.styleable.CircleWaveProgress_circle_text));
@@ -196,7 +195,7 @@ public class CircleWaveProgress extends View {
 
         canvas.restore();
         //draw circle stroke
-        canvas.drawCircle(getWidth() / 2f, getHeight() / 2f, (getWidth() - getmBorderWith()) / 2f, circlePaint);
+        canvas.drawCircle(getWidth() / 2f, getHeight() / 2f, (getWidth() - getBorderWith()) / 2f, circlePaint);
         //fro draw circle method 2
 //        final Path circlePath = new Path();
 //        circlePath.addCircle(getWidth() / 2f, getHeight() / 2f, getWidth() / 2f - 2f, Path.Direction.CCW);
@@ -204,8 +203,8 @@ public class CircleWaveProgress extends View {
 
         //draw text
         String text = getCircleText();
+        float textHeight = textPaint.descent() + textPaint.ascent();
         if (!TextUtils.isEmpty(text)) {
-            float textHeight = textPaint.descent() + textPaint.ascent();
             canvas.drawText(text, (getWidth() - textPaint.measureText(text)) / 2.0f, (getWidth() - textHeight) / 2.0f, textPaint);
         }
 
@@ -339,6 +338,7 @@ public class CircleWaveProgress extends View {
         if (this.progress > getMax()) {
             this.progress %= getMax();
         }
+        setCircleText(progress+"%");
         invalidate();
     }
 
@@ -358,6 +358,7 @@ public class CircleWaveProgress extends View {
     }
 
     public void setTextSize(float textSize) {
+        textSize = DensityUtil.sp2px(getResources(), textSize);
         this.textSize = textSize;
         textPaint.setTextSize(textSize);
         this.invalidate();
@@ -391,43 +392,46 @@ public class CircleWaveProgress extends View {
         this.invalidate();
     }
 
-    public int getmFrontWaveColor() {
+    public int getFrontWaveColor() {
         return mFrontWaveColor;
     }
 
-    public void setmFrontWaveColor(int mFrontWaveColor) {
-        this.mFrontWaveColor = mFrontWaveColor;
-        mFrontWavePaint.setColor(mFrontWaveColor);
+    public void setFrontWaveColor(int frontWaveColor) {
+        this.mFrontWaveColor = frontWaveColor;
+        mFrontWavePaint.setColor(frontWaveColor);
+        mFrontWavePaint.setAlpha(DEFAULT_WAVE_FRONT_ALPHA);
         this.invalidate();
     }
 
-    public int getmBehindWaveColor() {
+    public int getBehindWaveColor() {
         return mBehindWaveColor;
     }
 
-    public void setmBehindWaveColor(int mBehindWaveColor) {
-        this.mBehindWaveColor = mBehindWaveColor;
-        mBehindWavePaint.setColor(mBehindWaveColor);
+    public void setBehindWaveColor(int behindWaveColor) {
+        this.mBehindWaveColor = behindWaveColor;
+        mBehindWavePaint.setColor(behindWaveColor);
+        mBehindWavePaint.setAlpha(DEFAULT_WAVE_BEHIND_ALPHA);
         this.invalidate();
     }
 
-    public int getmBorderColor() {
+    public int getBorderColor() {
         return mBorderColor;
     }
 
-    public void setmBorderColor(int mBorderColor) {
-        this.mBorderColor = mBorderColor;
-        circlePaint.setColor(mBorderColor);
+    public void setBorderColor(int borderColor) {
+        this.mBorderColor = borderColor;
+        circlePaint.setColor(borderColor);
         this.invalidate();
     }
 
-    public float getmBorderWith() {
+    public float getBorderWith() {
         return mBorderWith;
     }
 
-    public void setmBorderWith(float mBorderWith) {
-        this.mBorderWith = mBorderWith;
-        circlePaint.setStrokeWidth(mBorderWith);
+    public void setBorderWith(float borderWith) {
+        borderWith = DensityUtil.dip2px(getContext(), borderWith);
+        this.mBorderWith = borderWith;
+        circlePaint.setStrokeWidth(borderWith);
         this.invalidate();
     }
 
