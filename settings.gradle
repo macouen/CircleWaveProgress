@@ -1,1 +1,1 @@
-include ':app', ':circleWave'
+include ':app', ':circlewaveprogress'

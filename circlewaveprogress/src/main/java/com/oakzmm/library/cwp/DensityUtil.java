@@ -1,4 +1,4 @@
-package com.oakzmm.library;
+package com.oakzmm.library.cwp;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -20,11 +20,6 @@ public class DensityUtil {
 		return sp * scale;
 	}
 
-	/**
-	 * measure view
-	 * 
-	 * @param view
-	 */
 	public static void calcViewMeasure(View view) {
 		int width = View.MeasureSpec.makeMeasureSpec(0,
 				View.MeasureSpec.UNSPECIFIED);
