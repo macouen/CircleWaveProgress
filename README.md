@@ -1,6 +1,6 @@
 # CircleWaveProgress
 
->circle wave view ， progress
+>circle wave view ， progress   
 >The most important part  `WAVE` ，from  [john990-WaveView](https://github.com/john990/WaveView) ,thanks very much;
 
 
@@ -13,7 +13,7 @@
 
 ### Gradle
 
-```
+```java
 dependencies {
    compile 'com.oakzmm:circlewaveprogress:1.0.1'
 }
@@ -22,7 +22,7 @@ dependencies {
 
 ### Maven
 
-```
+```java
 <dependency>
   <groupId>com.oakzmm</groupId>
   <artifactId>circlewaveprogress</artifactId>
@@ -54,7 +54,7 @@ copy codes into you project
 
 - class
 
-```
+```java
 //must  call this  when  init ,such as onCreate();
  circleWaveProgress.setWaveRun(true);
 
