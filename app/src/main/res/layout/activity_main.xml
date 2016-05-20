@@ -13,12 +13,12 @@
     tools:context="com.oakzmm.circlewaveprogress.MainActivity">
 
     <com.oakzmm.library.cwp.CircleWaveProgress
-        android:id="@+id/circleWaveProgress"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        app:circle_progress="30"/>
+    android:id="@+id/circleWaveProgress"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="center"
+    app:circle_progress="30"/>
 
     <TextView
         android:layout_width="wrap_content"
