@@ -187,10 +187,6 @@ public class CircleWaveProgress extends View {
         canvas.restore();
         //draw circle stroke
         canvas.drawCircle(getWidth() / 2f, getHeight() / 2f, (getWidth() - getBorderWith()) / 2f, circlePaint);
-        //fro draw circle method 2
-//        final Path circlePath = new Path();
-//        circlePath.addCircle(getWidth() / 2f, getHeight() / 2f, getWidth() / 2f - 2f, Path.Direction.CCW);
-//        canvas.drawPath(circlePath,circlePaint);
 
         //draw text
         String text = getCircleText();
@@ -198,12 +194,8 @@ public class CircleWaveProgress extends View {
         if (!TextUtils.isEmpty(text)) {
             canvas.drawText(text, (getWidth() - textPaint.measureText(text)) / 2.0f, (getWidth() - textHeight) / 2.0f, textPaint);
         }
-
     }
 
-    /**
-     * calculate wave track
-     */
     private void calculatePath() {
         mFrontWavePath.reset();
         mBehindWavePath.reset();
@@ -226,28 +218,6 @@ public class CircleWaveProgress extends View {
 
     }
 
-    /*
-        @Override
-        protected void onWindowVisibilityChanged(int visibility) {
-            super.onWindowVisibilityChanged(visibility);
-    //        if (View.GONE == visibility || View.INVISIBLE == visibility || getProgress() == 0) {
-    //            removeCallbacks(mRefreshProgressRunnable);
-    //        } else {
-    //            removeCallbacks(mRefreshProgressRunnable);
-    //            mRefreshProgressRunnable = new RefreshProgressRunnable(this);
-    //            post(mRefreshProgressRunnable);
-    //        }
-        }
-        @Override
-        public void onWindowFocusChanged(boolean hasWindowFocus) {
-            super.onWindowFocusChanged(hasWindowFocus);
-    //        if (hasWindowFocus) {
-    //            if (mWaveLength == 0) {
-    //                startWave();
-    //            }
-    //        }
-        }
-    */
     public void setWaveRun(boolean isRun) {
         if (isRun && getProgress() > 0) {
             removeCallbacks(mRefreshProgressRunnable);
@@ -457,7 +427,6 @@ public class CircleWaveProgress extends View {
                 mWaveProgress.invalidate();
                 long gap = 16 - System.currentTimeMillis() - start;
                 mWaveProgress.postDelayed(this, gap < 0 ? 0 : gap);
-//                mWaveProgress.postDelayed(this, 20);
             }
         }
     }

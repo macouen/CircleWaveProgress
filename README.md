@@ -15,7 +15,7 @@
 
 ```java
 dependencies {
-   compile 'com.oakzmm:circlewaveprogress:1.0.1'
+   compile 'com.oakzmm:circlewaveprogress:1.0.2'
 }
 
 ```
@@ -26,7 +26,7 @@ dependencies {
 <dependency>
   <groupId>com.oakzmm</groupId>
   <artifactId>circlewaveprogress</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <type>pom</type>
 </dependency>
 
