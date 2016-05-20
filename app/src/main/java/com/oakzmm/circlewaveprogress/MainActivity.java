@@ -2,8 +2,11 @@ package com.oakzmm.circlewaveprogress;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSeekBar;
+import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -16,7 +19,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.progress)
-    AppCompatSeekBar progress;
+    AppCompatSeekBar mSeekBar;
     @Bind(R.id.border_with)
     AppCompatSeekBar borderWith;
     @Bind(R.id.border_color)
@@ -29,18 +32,31 @@ public class MainActivity extends AppCompatActivity {
     CircleWaveProgress circleWaveProgress;
     @Bind(R.id.text_border_with)
     TextView textBorderWith;
+    private BitHandler mBitHandler;
+    private boolean flag = false;
+    private int mProgress = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mBitHandler = new BitHandler();
         circleWaveProgress.setWaveRun(true);
         circleWaveProgress.setMax(100);
-        progress.setMax(100);
-        progress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        mProgress = circleWaveProgress.getProgress();
+        circleWaveProgress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new myThread().start();
+            }
+        });
+        mSeekBar.setMax(100);
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                flag=false;
+                mProgress = progress;
                 circleWaveProgress.setProgress(progress);
             }
 
@@ -129,5 +145,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    class BitHandler extends Handler {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            circleWaveProgress.setProgress(mProgress);
+            if (mProgress==100)
+                flag = true;
+        }
+    }
+    private class myThread extends Thread {
+        @Override
+        public void run() {
+            super.run();
+            while (!flag) {
+                // 重绘
+                mProgress++;
+                mBitHandler.sendEmptyMessage(0);
+                try {
+                    synchronized (this) {
+                        Thread.sleep(100);
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }
