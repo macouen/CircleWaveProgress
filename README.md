@@ -55,8 +55,11 @@ copy codes into you project
 - class
 
 ```java
-//must  call this  when  init ,such as onCreate();
- circleWaveProgress.setWaveRun(true);
+//must call this method when init ,such as onCreate() or onResume();
+circleWaveProgress.setWaveRun(true);
+
+// stop wave by call setWaveRun(false) when Activity or Fragment or view invisiable,such as onPause();
+circleWaveProgress.setWaveRun(false);
 
 ```
 
